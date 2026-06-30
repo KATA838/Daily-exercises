@@ -1,28 +1,37 @@
-#ip地址列表
-ip_list = ["192.168.1.1","192.168.1.2","192.168.1.3","192.168.1.4"]
+# 字典用花括号 {}
+# 格式：键: 值，键: 值
+# "name" 是键，"Core-SW-01" 是值
+device = {
+    "name": "Core-SW-01",    # 设备名
+    "ip": "10.0.0.1",        # IP地址
+    "vendor": "Cisco",        # 厂商
+    "ports": 48,              # 端口数（数字不用引号）
+    "vlans": [10, 20, 30],   # VLAN列表（列表可以当值）
+    "status": "up"            # 状态
+}
 
-#添加新ip
-ip_list.append("192.168.1.5")
+# 查字典：用方括号 [] 里面写键
+# device["name"] 就是取 "name" 对应的值
+print(f"设备名: {device['name']}")
+# 输出：设备名: Core-SW-01
 
-#打印所有ip
-print("所有ip:")
-for ip in ip_list:          #为什么遍历不输出
-    print(f" - {ip}")
+print(f"厂商: {device['vendor']}")
+# 输出：厂商: Cisco
 
-#统计数量
-print(f"\n总设备数:{len(ip_list)}")
+# 修改字典：直接赋值
+# 原来没有 "location"，现在加上
+device["location"] = "机房A"
+# 现在 device 里多了 "location": "机房A"
 
-#检查某个ip是否存在
-target_ip = "192.168.1.5"
-if target_ip in ip_list:        
-    print(f"{target_ip}在线")
-else:
-    print(f"{target_ip}不在线")
+# 修改已有的值
+device["ports"] = 52
+# 原来48，现在变成52
 
-print("删除.5")
-ip_list.remove("192.168.1.5")
-print(f"所有ip{ip_list}")
-if target_ip in ip_list:
-    print(f"{target_ip}在线")
-else:
-    print(f"{target_ip}不在线")
+# 遍历：一个一个看
+# .items() 把字典变成一对一对的
+# 第一次：key="name", value="Core-SW-01"
+# 第二次：key="ip", value="10.0.0.1"
+# ...
+print("\n--- 设备完整信息 ---")
+for key, value in device.items():
+    print(f"{key}: {value}")

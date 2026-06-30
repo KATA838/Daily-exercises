@@ -1,16 +1,31 @@
-#初始vlan列表
-vlans = [10,20,30]
+# IP地址池：就像一个池子，里面放着可用的IP
+# 列表用方括号 []，里面可以存多个东西
+ip_pool = ["192.168.1.10", "192.168.1.11", "192.168.1.12"]
+#           ↑ 第0个        ↑ 第1个        ↑ 第2个
+# Python从0开始数！
 
-#添加vlan
-vlans.append(40)
-vlans.append(50)
+# 新设备名字
+new_device = "Server-01"
 
-#打印信息
-print(f"当前vlan列表{vlans}")
-print(f"vlan数量{len(vlans)}")
-print(f"第一个vlan{vlans[0]}") #索引从0开始
-print(f"最后一个vlan{vlans[-1]}") #-1最后一个
+# pop(0) 是"弹出第0个"
+# 就像从池子里捞一条鱼出来
+# ip_pool 原来是 ["192.168.1.10", "192.168.1.11", "192.168.1.12"]
+# pop(0) 后变成 ["192.168.1.11", "192.168.1.12"]
+# 捞出来的 "192.168.1.10" 给 assigned_ip
+assigned_ip = ip_pool.pop(0)
 
-#删除vlan
-vlans.remove(20)
-print(f"删除vlan 20后{vlans}")
+# 显示分配结果
+print(f"设备 {new_device} 分配到 IP: {assigned_ip}")
+# 输出：设备 Server-01 分配到 IP: 192.168.1.10
+
+# 显示剩余IP池
+print(f"剩余IP池: {ip_pool}")
+# 输出：剩余IP池: ['192.168.1.11', '192.168.1.12']
+
+# append 是"追加"，把IP还回去
+# 就像把鱼扔回池子
+ip_pool.append(assigned_ip)
+
+print(f"回收后IP池: {ip_pool}")
+# 输出：回收后IP池: ['192.168.1.11', '192.168.1.12', '192.168.1.10']
+# 注意：还回去的在最后面，不在原来的位置

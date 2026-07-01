@@ -1,6 +1,24 @@
-for vlan_id in range(10,16):
-    print(f"vlan {vlan_id}")
-    print(f" name VLAN_{vlan_id}")
-    print("!")
+# ============================================
+# 文件名: M1-D4-loop_task2.py
+# 功能: 批量生成VLAN配置（思科格式）
+# ============================================
 
+# vlan_id 比 i 更有意义，一看就知道是VLAN编号
+# range(10, 16) 生成：10, 11, 12, 13, 14, 15
+# 从10开始，到16结束（不包括16），共6个数字
+for vlan_id in range(10,16):
     
+    # 打印VLAN编号
+    # 思科命令格式：vlan 10
+    print(f"vlan {vlan_id}")
+    
+    # 打印VLAN名称
+    # 前面有空格，因为这是vlan命令的子命令
+    # 思科格式： name VLAN_10
+    print(f" name VLAN_{vlan_id}")
+    
+    # 打印感叹号作为分隔符
+    # 在思科配置里，! 是注释/分隔符
+    print("!")
+    
+# 循环结束后，生成了6个VLAN的配置
